@@ -3,9 +3,9 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>com.rcstamato.diy.cameramonitor</string>
+    <string>com.rcstamato.busylight</string>
     <key>Program</key>
-    <string>/Users/ricardostamato/diy/camera_monitor.py</string>
+    <string>/Users/ricardostamato/pet_projects/busylight/camera_monitor.py</string>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
