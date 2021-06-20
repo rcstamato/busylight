@@ -35,8 +35,8 @@ while True:
     if p.poll():
         line = f.stdout.readline()
         if 'Streaming on event kCameraStreamStart' in str(line):
-            client.publish("busylight/stamato", "ON")
+            client.publish("busylight/stamato", "ON", retain=True)
             print('Published ON event')
         elif 'Init on event kCameraStreamStop' in str(line):
-            client.publish("busylight/stamato", "OFF")
+            client.publish("busylight/stamato", "OFF", retain=True)
             print('Published OFF event')
