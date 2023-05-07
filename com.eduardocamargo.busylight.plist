@@ -5,7 +5,7 @@
     <key>Label</key>
     <string>com.rcstamato.busylight</string>
     <key>Program</key>
-    <string>/Users/ricardostamato/pet_projects/busylight/camera_monitor.py</string>
+    <string>/Users/eduardocamargo/Projects/busylight/camera_monitor_mqtt.py</string>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>

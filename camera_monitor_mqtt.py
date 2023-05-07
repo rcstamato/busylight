@@ -3,6 +3,7 @@
 import time
 import subprocess
 import select
+import json
 import paho.mqtt.client as mqtt
 
 # The callback for when the mqtt client receives a CONNACK response from the server.
@@ -17,13 +18,10 @@ client = mqtt.Client()
 client.on_connect = on_connect
 
 # enable TLS
-client.tls_set(tls_version=mqtt.ssl.PROTOCOL_TLS)
+# client.tls_set(tls_version=mqtt.ssl.PROTOCOL_TLS)
 
 # set username and password
-client.username_pw_set("busylight", "Passw0rd")
-
-# connect to HiveMQ Cloud on port 8883
-client.connect("b5a503092762466cb301345286096f43.s1.eu.hivemq.cloud", 8883)
+client.username_pw_set("busylight", "busylight_eduardo")
 
 # Command to check if camera is on
 cmd = '/usr/bin/log stream'
@@ -35,8 +33,10 @@ while True:
     if p.poll():
         line = f.stdout.readline()
         if 'Streaming on event kCameraStreamStart' in str(line):
-            client.publish("busylight/stamato", "ON", retain=True)
+            client.connect("192.168.0.241", 1883)
+            client.publish("busylight/camargo", json.dumps({"status": True}), retain=True)
             print('Published ON event')
         elif 'Init on event kCameraStreamStop' in str(line):
-            client.publish("busylight/stamato", "OFF", retain=True)
+            client.connect("192.168.0.241", 1883)
+            client.publish("busylight/camargo",json.dumps({"status": False}), retain=True)
             print('Published OFF event')
